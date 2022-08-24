@@ -6,9 +6,17 @@ import java.io.InputStreamReader;
 
 
 public class Main {
+
+    public static String[] romeDig = {
+            "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"
+    };
+
+
+
     public static void main(String[] args) {
         calculaturus();
     }
+
     private static void calculaturus() {
         String str1 = input();
         String[] massOrig = str1.split(" ");
@@ -37,9 +45,10 @@ public class Main {
                 e.printStackTrace();
             }
 //            if (!result[0].equalsIgnoreCase("eror13")&&  (Integer.parseInt(result[1]) >= 1   )) System.out.println("Output:\n" + convertDig2Rom(result[1]));
-            if (!result[0].equalsIgnoreCase("eror13")) System.out.println("Output:\n" + convertDig2Rom(result[1]));
+            if (!result[0].equalsIgnoreCase("eror13")) System.out.println("Output:\n" + Dec2Roman100.convertDig2Rom2(result[1]));
         }
     }
+
     private static void arabcount(String[] mssOp, String[] massOrig) {
         String[] massDig;
         if (mssOp[0].equals("arab") && mssOp[1].equals("sign") && mssOp[2].equals("arab")) {
@@ -52,14 +61,16 @@ public class Main {
     private static String convertDig2Rom(String s) {
         String str;
         //TODO recode - результат в рим цифрах больше 20?
-        String[] romeDig = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX"};
         //TODO 0 в римском счете...
         str = romeDig[Integer.parseInt(s) - 1];
         return str;
     }
+
+
+
+
+
     private static int convertRom2Dig(String s) {
-//        String[] romeDig = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"};
-        String[] romeDig = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX"};
         int ind = -1;
         for (int i = 0; i < romeDig.length; i++) {
             if (s.equalsIgnoreCase(romeDig[i])) {
@@ -68,6 +79,7 @@ public class Main {
         }
         return ind;
     }
+
 
     private static void check1(String[] massOrig) {
         try {
@@ -79,6 +91,7 @@ public class Main {
             e.printStackTrace();
         }
     }
+
     private static void check2(String[] mssOp) {
         try {
             if (mssOp[0].equals("arab") && mssOp[2].equals("rome") || mssOp[2].equals("arab") && mssOp[0].equals("rome"))
@@ -87,6 +100,7 @@ public class Main {
             e.printStackTrace();
         }
     }
+
     private static String checkNumber(String s) {
         boolean cifr1dig = true;
         boolean cifr1rome = false;
@@ -98,7 +112,7 @@ public class Main {
         }
 
         //TODO чек ввода римских чисел > 10  ?  или чек билеберды
-        String[] romeDig = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX"};
+//        String[] romeDig = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX"};
 
         for (String value : romeDig) {
             if (s.equals(value)) {
@@ -129,6 +143,7 @@ public class Main {
             return "eror";
         }
     }
+
     private static String check10(int cif1, int cif2) {
         String str0 = "no error";
         try {
@@ -198,12 +213,15 @@ public class Main {
     private static int sum(int cifr1, int cifr2) {
         return cifr1 + cifr2;
     }
+
     private static int sub(int cifr1, int cifr2) {
         return cifr1 - cifr2;
     }
+
     private static int multi(int cifr1, int cifr2) {
         return cifr1 * cifr2;
     }
+
     private static int devI(int cifr1, int cifr2) {
         return cifr1 / cifr2;
     }
